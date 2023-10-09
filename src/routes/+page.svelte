@@ -1,3 +1,6 @@
+<script>
+  export let data
+</script>
 <!-- Content -->
 <div class="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pb-16 md:pb-20">
   <!-- Middle area -->
@@ -29,31 +32,28 @@
 
           <!-- Articles list -->
           <div>
+            {#each data.articles as {slug, title, subtitle, publishDate}}
             <article
               class="py-5 border-b border-slate-100 dark:border-slate-800"
             >
               <div class="flex items-start">
                 <div>
                   <div class="text-xs text-slate-500 uppercase mb-1">
-                    <span class="text-sky-500">—</span> Dec 24, 2023
+                    <span class="text-sky-500">—</span> {publishDate}
                   </div>
                   <h3 class="font-aspekta text-lg font-[650] mb-1">
                     <a
                       class="inline-flex relative hover:text-sky-500 duration-150 ease-out before:scale-x-0 before:origin-center before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:translate-y-1/4 before:-rotate-2 hover:before:scale-100 before:duration-150 before:ease-in-out"
-                      href="post.html">An Interactive Guide to Flexbox</a
+                      href="/journal/{slug}">{title}</a
                     >
                   </h3>
                   <div class="flex">
                     <div
                       class="grow text-sm text-slate-500 dark:text-slate-400"
-                    >
-                      Flexbox is a remarkably flexible layout mode. When we
-                      understand how it works, we can build responsive designs
-                      that rearrange themselves as needed.
-                    </div>
+                    >{subtitle}</div>
                     <a
                       class="hidden lg:flex shrink-0 text-sky-500 items-center justify-center w-12 group"
-                      href="post.html"
+                      href="/journal/{slug}"
                       tabindex="-1"
                     >
                       <svg
@@ -71,6 +71,8 @@
                 </div>
               </div>
             </article>
+            {/each}
+
           </div>
         </section>
       </div>
